@@ -4,13 +4,12 @@ class MegaAnnounce {
 	public:
 		std::string mes;
 		void toCap() {
-			int	i = 0;
-			while (i < strlen(this.mes))
+			std::string::size_type	i = 0;
+			while (i < mes.length())
 			{
 				mes[i] = toupper(mes[i]);
 				i++;
 			}
-
 		}
 };
 
@@ -19,14 +18,17 @@ int	main(int argc, char *argv[])
 	int	i = 1;
 
 	MegaAnnounce announcement; 
+	if (argc == 1)
+	{
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << "\n";
+		return 0;
+	}
 	while (i < argc)
 	{
 		announcement.mes += argv[i];
-		if (i != argc - 1)
-			announcement.mes += " ";
 		i++;
 	}
-
+	announcement.toCap();
 	std::cout << announcement.mes << "\n";
 	return 0;
 }
